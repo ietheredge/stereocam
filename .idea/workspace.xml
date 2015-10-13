@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f03dec1d-cd22-4e1d-94b7-d954194acd47" name="Default" comment="using opencv to build up stereocamera protocol for underwater imaging">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="stereocam.iws" />
     <ignored path=".idea/workspace.xml" />
