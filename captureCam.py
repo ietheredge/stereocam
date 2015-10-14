@@ -11,6 +11,3 @@ with picamera.PiCamera() as camera:
         'img%04d.jpg' % i #format
         for i in range(10) #number of sample images
     ), use_video_port=False) #capture frames from stream or images (False==images,True==frames)
-
-
-

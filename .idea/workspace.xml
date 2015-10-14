@@ -2,88 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f03dec1d-cd22-4e1d-94b7-d954194acd47" name="Default" comment="using opencv to build up stereocamera protocol for underwater imaging">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/.ipynb_checkpoints/Untitled0-checkpoint.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0000.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img00007.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img00007_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0000_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0001.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0001_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0002.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0002_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0003.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0003_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0004.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0004_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0005.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0005_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0006.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0006_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0008.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0008_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0014.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0014_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0015.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0015_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0017.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0017_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0018.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0018_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0019.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0019_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0020.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0020_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0021.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0021_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0022.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0022_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0023.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0023_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0026.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0026_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0029.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages/img0029_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left01_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left01_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left02_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left02_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left03_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left03_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left04_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left04_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left05.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left05_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left05_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left06.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left06_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left06_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left07.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left07_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left07_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left08.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left08_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left08_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left09.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left09_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left11.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left11_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left12.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left12_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left12_lined.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left13.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left13_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left14.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left14_calibresult.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/localfiles/calibrationImages_opencvexample/left14_lined.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/captureCam.py" afterPath="$PROJECT_DIR$/captureCam.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/stereocam.iml" afterPath="$PROJECT_DIR$/.idea/stereocam.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="stereocam.iws" />
@@ -108,10 +27,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="calibrateCamera.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="calibrateCamera.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/calibrateCamera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.83916086" vertical-offset="90" max-vertical-offset="1275">
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1275">
               <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
@@ -130,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="captureCam.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="captureCam.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/captureCam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.052447554" vertical-offset="0" max-vertical-offset="286">
+              <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
               <folding>
                 <element signature="e#87#98#0" expanded="true" />
               </folding>
@@ -410,10 +329,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1398" height="532" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28636363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28636363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -678,16 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/captureCam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#87#98#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project3D.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
@@ -700,9 +609,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/calibrateCamera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83916086" vertical-offset="90" max-vertical-offset="1275">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1275">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captureCam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.052447554" vertical-offset="0" max-vertical-offset="286">
+          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+          <folding>
+            <element signature="e#87#98#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
