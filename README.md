@@ -4,7 +4,7 @@
 #You may need to:
 sudo chmod +x startup_mailer.py
 
-#and in order to run this it start up edit:
+#and in order to run this at start up edit:
 sudo nano /etc/rc.local
 #add
  _IP=$(hostname -I) || true
