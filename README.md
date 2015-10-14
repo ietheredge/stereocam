@@ -1,13 +1,12 @@
-# onpiboot
+
 #Housekeeping scripts to perform at start up of raspberrypi. these scripts are run (in Raspbian)
 
 #You may need to:
 sudo chmod +x startup_mailer.py
 
-#and in order to run this it start up edit:
+#and in order to run this at start up edit:
 sudo nano /etc/rc.local
 #add
-
  _IP=$(hostname -I) || true  
  if [ "$_IP" ]; then  
    printf "My IP address is %s\n" "$_IP"  
