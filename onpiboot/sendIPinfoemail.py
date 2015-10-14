@@ -3,20 +3,16 @@ import smtplib
 from email.mime.text import MIMEText
 import datetime
 import netrc
-import pickle
+import ConfigParser
 
-##load in email host, recipient and login info
-hostnamefile = open('emailhost', 'r')
-unpickledhostname = pickle.load(hostnamefile)
-hostnamefile.close()
-HOST = unpickledhostname
+##load in configuration (host, address, secrets)
+Config = ConfigParser.ConfigParser()
+Config.read("sendIPinfoemail.ini")
+
+HOST = Config.get('Settings', 'hostname')
+to = Config.get('Settings', 'toaddress')
 secrets = netrc.netrc()
 username, account, password = secrets.authenticators(HOST)
-
-emailrecipientfile = open('emailto', 'r')
-unpickledemailrecipients = pickle.load(emailrecipientsfile)
-emailrecipientsfile.close()
-to = unpickledemailrecipients 
 
 ##connect to email server
 smtpserver = smtplib.SMTP(HOST, 587)
