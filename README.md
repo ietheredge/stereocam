@@ -1,5 +1,5 @@
 
-#Housekeeping scripts to perform at start up of raspberrypi. these scripts are run (in Raspbian)
+#Housekeeping scripts to perform at start up of raspberrypi (running Raspbian)
 
 #You may need to:
 sudo chmod +x startup_mailer.py
