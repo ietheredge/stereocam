@@ -10,7 +10,7 @@ sudo nano /etc/rc.local
  _IP=$(hostname -I) || true  
  if [ "$_IP" ]; then  
    printf "My IP address is %s\n" "$_IP"  
-   python  [path to folder]/startup_mailer.py        <<<--THIS LINE!!!  
+   python  [path to folder]/sendIPinfoemail.py        <<<--THIS LINE!!!  
  fi  
  exit 0   
  
