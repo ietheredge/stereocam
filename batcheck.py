@@ -9,8 +9,10 @@ class App:
 
     def check(self):
         if GPIO.input(16):
+            print True
             return True
         else:
+            print False
             return False
 
 if __name__ == '__main__':
