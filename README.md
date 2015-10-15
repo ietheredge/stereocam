@@ -22,5 +22,5 @@ hostname: [your email host name, eg: smtp.gmail.com]
 toaddress: [emailaddress you want to send to]  
 compname: [the name of your machine eg: RaspberryPi]  
 #and... the netrc
-machine [your email host] login [fred] password [bluebonnet]  
+machine [your email host] login [loginID] password [PWD]  
 
