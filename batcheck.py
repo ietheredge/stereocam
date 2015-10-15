@@ -4,7 +4,7 @@ class App:
 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(17, GPIO.IN)
+        GPIO.setup(16, GPIO.IN)
         print 'pin 16: ',str(GPIO.input(16))
 
     def check(self):
