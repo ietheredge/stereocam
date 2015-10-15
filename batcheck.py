@@ -10,7 +10,7 @@ class App:
     def check(self):
         if GPIO.input(16):
             return True
-        elif:
+        else:
             return False
 
 if __name__ == '__main__':
