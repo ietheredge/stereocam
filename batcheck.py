@@ -37,7 +37,7 @@ class App:
         else:
             print 'battery must be low (have a significant drop in voltage) to start log.\n' \
                   '\trun $:python batcheck.py --calib to check every 5 minutes and create log on detection' \
-                  '\n\n ...if you are seeing this and a log file, you probably plugged the charger in'
+                  
 
     def retlowbatcal(self):
 
