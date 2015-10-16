@@ -1,5 +1,8 @@
 import RPi.GPIO as GPIO
+import argparse
+
 __version__ = "P16.1.0"
+
 class App:
 
     def __init__(self):
@@ -15,6 +18,36 @@ class App:
             print False
             return False
 
+    def loglowbat(self):
+        if not GPIO.input(16):
+            import logging
+            print 'battery voltage drop detected, starting log.'
+            while True:
+                batlog = logging.getLogger('%slowbatstillon.log' % time.strftime('%m%d%Y'))
+                batlog.info("they say I got a low battery but I ain't dead yet!")
+                time.sleep(60)
+        else:
+            print 'battery must be low (have a significant drop in voltage) to start log.\n' \
+                  '\trun $:python batcheck.py --calib to check every 5 minutes and create log on detection'
+
+    def retlowbatcal(self):
+        pass #come back to this, parse log file(s) to find average time left when low battery
+
 if __name__ == '__main__':
-    app = App()
-    app.check()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-c","--calib", help="run batcheck with calibration on")
+    ap.add_argument("-r","--readcal", help="returns the average battery reserve calibration")
+    args = vars(ap.parse_args())
+    batapp = App()
+    batapp.check()
+    if args["calib"]:
+        import time
+        while True:
+            if batapp.check():
+                print 'battery voltage OK'
+                continue
+            else:
+                batapp.loglowbat()
+            time.sleep(300)
+    if args["readcal"]:
+        batapp.retlowbatcal()
