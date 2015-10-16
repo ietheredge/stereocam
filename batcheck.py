@@ -35,19 +35,20 @@ class App:
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument("-c","--calib", help="run batcheck with calibration on")
-    ap.add_argument("-r","--readcal", help="returns the average battery reserve calibration")
+    ap.add_argument("-c","--calib", help="run batcheck with calibration on", action='store_true')
+    ap.add_argument("-r","--readcal", help="returns the average battery reserve calibration", action='store_true')
     args = vars(ap.parse_args())
     batapp = App()
     batapp.check()
     if args["calib"]:
         import time
         while True:
+	    time.sleep(300)
             if batapp.check():
                 print 'battery voltage OK'
                 continue
             else:
                 batapp.loglowbat()
-            time.sleep(300)
+
     if args["readcal"]:
         batapp.retlowbatcal()
