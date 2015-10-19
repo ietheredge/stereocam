@@ -46,6 +46,7 @@ class App:
         # print the first and last lines of log file
         f = open('log/lowbatlog.log')
         lines = f.read().splitlines()
+        return lines[0],lines[-1]
         print lines[0]
         print lines[-1]
 
