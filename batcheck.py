@@ -7,21 +7,22 @@ __version__ = "P16.1.0"
 
 class App:
     def __init__(self):
+        # setup GPIO pin for battery gate input
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(16, GPIO.IN)
         print 'pin 16: ', str(GPIO.input(16))
 
     def check(self):
-
+        # check GPIO pin for voltage drop
         if GPIO.input(16):
-            print True
+            #print True
             return True
         else:
-            print False
+            #print False
             return False
 
     def loglowbat(self):
-
+        # calibrate battery life expectation after voltage drop
         if not GPIO.input(16):
             import logging
             print 'battery voltage drop detected, starting log.'
@@ -42,9 +43,11 @@ class App:
 
 
     def retlowbatcal(self):
+        # print the first and last lines of log file
         f = open('log/lowbatlog.log')
-        for line in f.readlines():
-            print line 
+        lines = f.read().splitlines()
+        print lines[0]
+        print lines[-1]
 
 
 if __name__ == '__main__':
