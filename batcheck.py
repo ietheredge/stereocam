@@ -43,7 +43,7 @@ class App:
 
     def retlowbatcal(self):
         f = open('log/lowbatlog.log')
-	for line in f.readlines():
+	    for line in f.readlines():
             print line 
 
 
