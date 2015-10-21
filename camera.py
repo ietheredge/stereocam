@@ -20,7 +20,7 @@ class App:
         self.out = outputfile
 
         # setup camera
-        self.camera = picamera.Picamera()
+        self.camera = picamera.PiCamera()
         self.camera.resolution = res
         self.camera.raw_format = str(imformat)
         self.camera.exposure_mode = exposure
