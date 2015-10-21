@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 import argparse
 
-
 __version__ = "P16.1.0"
 
 
@@ -24,19 +23,12 @@ class App:
     def loglowbat(self):
         # calibrate battery life expectation after voltage drop
         if not GPIO.input(16):
-            import logging
             print 'battery voltage drop detected, starting log.'
-            batlog = logging.getLogger('lowbatlog')
-            hdlr = logging.FileHandler('log/lowbatlog.log')
-            formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%m/%d/%Y:%H:%M:%S")
-            hdlr.setFormatter(formatter)
-            batlog.addHandler(hdlr)
-            batlog.setLevel(logging.INFO)
             batlog.info("battery voltage drop detected")
 
             while True:
                 batlog.info("they say I got a low battery but I ain't dead yet!")
-                time.sleep(60)
+                time.sleep(120)
         else:
             print 'battery must be low (have a significant drop in voltage) to start log.\n' \
                   '\trun $:python batcheck.py --calib to check every 5 minutes and create log on detection' \
@@ -46,9 +38,10 @@ class App:
         # print the first and last lines of log file
         f = open('log/lowbatlog.log')
         lines = f.read().splitlines()
-        return lines[0],lines[-1]
         print lines[0]
+        print lines[1]
         print lines[-1]
+        return lines[0], lines[1], lines[-1]
 
 
 if __name__ == '__main__':
@@ -61,9 +54,17 @@ if __name__ == '__main__':
 
     if args["calib"]:
         import time
+        import logging
+        batlog = logging.getLogger('lowbatlog')
+        hdlr = logging.FileHandler('log/lowbatlog.log')
+        formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%m/%d/%Y:%H:%M:%S")
+        hdlr.setFormatter(formatter)
+        batlog.addHandler(hdlr)
+        batlog.setLevel(logging.INFO)
+        batlog.info("starting calibration schedule, will check for voltage drop every 5 minutes")
         print 'monitoring battery for voltage drop.'
         while True:
-            time.sleep(30)
+            time.sleep(300)
             if batapp.check():
                 print 'battery voltage OK!'
                 continue
