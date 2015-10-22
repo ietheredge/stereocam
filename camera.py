@@ -21,19 +21,19 @@ class App:
 
         # setup camera
         self.camera = picamera.PiCamera()
-        self.camera.resolution = res
-        self.camera.raw_format = str(imformat)
-        self.camera.exposure_mode = exposure
-        self.camera.framerate = rate
+        self.camera.resolution = tuple(res)
+        self.imformat = imformat
+        self.camera.exposure_mode = str(exposure)
+        self.camera.framerate = float(rate)
         time.sleep(2)
 
     def capimage(self):
-        self.camera.capture('%s.%s' % (str(self.out), self.imformat))
+        self.camera.capture('%s.%s' % (str(self.out), str(self.imformat)))
 
 
     def capimagestack(self):
-        logging.info('camera exposure setting:'+str(camera.exposure_mode))
-        logging.info('camera shutter speed:'+str(camera.shutter_speed))
+        logging.info('camera exposure setting:'+str(self.camera.exposure_mode))
+        logging.info('camera shutter speed:'+str(self.camera.shutter_speed))
         self.camera.capture_sequence((str(self.out)+'_%04d.jpg' % i for i in range(self.n)), use_video_port=False)
 
     def capvideo(self):
