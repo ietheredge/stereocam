@@ -16,7 +16,7 @@ class App:
         datlog.addHandler(hdlr)
         datlog.setLevel(logging.INFO)
         ##datlog.info("camera initiated stack n= ",str(itterations)," format= ",str(imformat)," output to=",str(outputfile))
-        self.n = float(itterations)
+        self.n = int(itterations)
         self.out = outputfile
 
         # setup camera
