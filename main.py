@@ -9,10 +9,17 @@ import os.path
 import time
 import math
 import RTIMU
+import camera
 
 logging.basicConfig(filename='divelog.log', level=logging.DEBUG)
 SETTINGS_FILE = "RTIMULib"
 
+
+kamera = camera.App('png', '1920x1080', 'sports', '30', '1', 'outfile')
+
+
+
+'''
 with picamera.PiCamera() as camera:
     camera.resolution = (1920,1080)
     camera.exposure_mode = 'sports'
@@ -23,7 +30,7 @@ with picamera.PiCamera() as camera:
         'img%04d.jpg' % i
         for i in range(30)
     ), use_video_port=False)
-
+'''
 print("Using settings file " + SETTINGS_FILE + ".ini")
 if not os.path.exists(SETTINGS_FILE + ".ini"):
   logging.debug('Settings file does not exist, will be created')

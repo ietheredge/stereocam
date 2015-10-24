@@ -16,19 +16,19 @@ class App:
         datlog.addHandler(hdlr)
         datlog.setLevel(logging.INFO)
         ##datlog.info("camera initiated stack n= ",str(itterations)," format= ",str(imformat)," output to=",str(outputfile))
-        self.n = itterations
+        self.n = float(itterations)
         self.out = outputfile
 
         # setup camera
         self.camera = picamera.PiCamera()
         self.camera.resolution = tuple(int(item) for item in exposure.split('x') if item.strip())
         self.imformat = imformat
-        self.camera.exposure_mode = str(exposure)
-        self.camera.framerate = float(rate)
+        self.camera.exposure_mode = exposure
+        self.camera.framerate = int(rate)
         time.sleep(2)
 
     def capimage(self):
-        self.camera.capture('%s.%s' % (str(self.out), str(self.imformat)))
+        self.camera.capture('%s.%s' % (self.out, self.imformat))
 
 
     def capimagestack(self):
