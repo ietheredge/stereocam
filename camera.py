@@ -37,7 +37,7 @@ class App:
         self.camera.capture_sequence((str(self.out)+'_%04d.jpg' % i for i in range(self.n)), use_video_port=False)
 
     def capvideo(self):
-        self.camera.start_recording('%s.%s' % (str(self.out), self.imformat))
+        self.camera.start_recording('%s.%s' % (str(self.out), 'mkv'))
         time.sleep(self.n)
         self.camera.stop_recording()
 
