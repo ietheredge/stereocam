@@ -21,7 +21,7 @@ class App:
 
         # setup camera
         self.camera = picamera.PiCamera()
-        self.camera.resolution = tuple(res)
+        self.camera.resolution = tuple(int(item) for item in exposure.split('x') if item.strip())
         self.imformat = imformat
         self.camera.exposure_mode = str(exposure)
         self.camera.framerate = float(rate)
