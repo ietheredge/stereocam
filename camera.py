@@ -43,8 +43,7 @@ class App:
 
     def capRAW(self):
         stream = io.BytesIO()
-        with picamera.PiCamera() as camera:
-            camera.capture(stream, format='jpeg', bayer=True)
+        camera.capture(stream, format='jpeg', bayer=True)
 
 
 if __name__=='__main__':
