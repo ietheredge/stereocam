@@ -31,7 +31,7 @@ class App:
                 time.sleep(120)
         else:
             print 'battery must be low (have a significant drop in voltage) to start log.\n' \
-                  '\trun $:python batcheck.py --calib to check every 5 minutes and create log on detection' \
+                  '\trun $:python checkbattery.py --calib to check every 5 minutes and create log on detection' \
 
 
     def retlowbatcal(self):
