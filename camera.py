@@ -7,7 +7,7 @@ import io
 
 class App:
 
-    def __init__(self, imformat, res, exposure, rate, itterations, outputfile):
+    def __init__(self, imformat, vcodec, res, exposure, rate, itterations, outputfile):
         # setup log
         datlog = logging.getLogger('datalog')
         hdlr = logging.FileHandler('log/datalog.log')
@@ -23,6 +23,7 @@ class App:
         self.camera = picamera.PiCamera()
         self.camera.resolution = tuple(int(item) for item in res.split('x') if item.strip())
         self.imformat = imformat
+        self.vcodec = vcodec
         self.camera.exposure_mode = exposure
         self.camera.framerate = int(rate)
         time.sleep(2)
@@ -37,7 +38,7 @@ class App:
         self.camera.capture_sequence((str(self.out)+'_%04d.jpg' % i for i in range(self.n)), use_video_port=False)
 
     def capvideo(self):
-        self.camera.start_recording('%s.%s' % (str(self.out), 'mkv'))
+        self.camera.start_recording('%s.%s' % (str(self.out), 'mkv'), format=self.vcodec)
         time.sleep(self.n)
         self.camera.stop_recording()
 
@@ -56,7 +57,8 @@ if __name__=='__main__':
     ap.add_argument("-r","--resolution", help="image resolution, default: 1920x1080")
     ap.add_argument("-e","--exposure", help="exposure mode, default: 'sports'")
     ap.add_argument("-r", "--framerate", help="video framerate, default: 30")
-    ap.add_argument("-f", "--format", help="pass output file format")
+    ap.add_argument("-f", "--format", help="pass image file format")
+    ap.add_argument("-vc", "--codec", help="pass the video codec to be used")
     ap.add_argument("-n", "--number", help="pass number of output objects or the length of video file in seconds")
     ap.add_argument("-o", "--output", help="output file name")
     args = vars(ap.parse_args())
@@ -75,9 +77,17 @@ if __name__=='__main__':
         rate = int(args["framerate"])
     else:
         rate = 30
+    if args["format"]:
+        imformat=str(args["format"])
+    else:
+        imformat='png'
+    if args["codec"]:
+        videocodec = str(args["codec"])
+    else:
+        videocodec = 'yuv'
 
     # initiate camera
-    kamera = App(args["format"], resolution, exposure, rate, args["number"],args["output"])
+    kamera = App(imformat, videocodec, resolution, exposure, rate, args["number"],args["output"])
 
     # captures
     if args["image"]:

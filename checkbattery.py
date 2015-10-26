@@ -21,7 +21,7 @@ class App:
             return False
 
     def loglowbat(self):
-        # calibrate battery life expectation after voltage drop
+        # log results from battery queries
         if not GPIO.input(16):
             print 'battery voltage drop detected, starting log.'
             batlog.info("battery voltage drop detected")
