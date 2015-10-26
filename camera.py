@@ -66,7 +66,7 @@ if __name__=='__main__':
     # defaults
     if args["resolution"]:
         resx, resy = args["resolution"].split("x")
-        resolution = int(resx), int(resy)
+        resolution = (int(resx), int(resy))
     else:
         resolution = (1920, 1080)
     if args["exposure"]:
@@ -85,9 +85,17 @@ if __name__=='__main__':
         videocodec = str(args["codec"])
     else:
         videocodec = 'yuv'
+    if args["number"]:
+        num = args["number"]
+    else:
+        num = 1
+    if args["output"]:
+        out = str(args["codec"])
+    else:
+        out = 'output%s' % str(time.asctime(time.localtime(time.time())))
 
     # initiate camera
-    kamera = App(imformat, videocodec, resolution, exposure, rate, args["number"],args["output"])
+    kamera = App(imformat, videocodec, resolution, exposure, rate, num, out)
 
     # captures
     if args["image"]:
