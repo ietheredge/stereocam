@@ -46,7 +46,7 @@ class App:
 
     def capraw(self):
         #stream = io.BytesIO()
-        self.camera.capture('../data/'+str(time.strftime('%H-%M-%S-%L'))+'.jpg' , format='jpeg', bayer=True)
+        self.camera.capture('../data/'+str(time.strftime('%H-%M-%S-%f'))+'.jpg' , format='jpeg', bayer=True)
 
     def capcontinuous(self):
         stream = io.BytesIO()
