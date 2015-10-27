@@ -106,7 +106,7 @@ if __name__=='__main__':
     # captures
     if args["image"]:
         if args["format"]=='RAW':
-            kamera.capRAW()
+            kamera.capraw()
         else:
             kamera.capimage()
     if args["video"]:
