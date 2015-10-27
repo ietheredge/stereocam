@@ -37,7 +37,7 @@ class App:
 
 
     def capimagestack(self):
-        self.camera.capture_sequence((str(self.out)+'_%04d.jpg' % i for i in range(self.n)), use_video_port=False)
+        self.camera.capture_sequence([str(self.out)+'_%04d.jpg' % i for i in range(self.n)], use_video_port=False)
 
     def capvideo(self):
         self.camera.start_recording('%s.%s' % (str(self.out), 'mkv'), format=self.vcodec)
@@ -46,7 +46,7 @@ class App:
 
     def capraw(self):
         #stream = io.BytesIO()
-        self.camera.capture('../data/'+'{timestamp:%H-%M-%S-%f}.jpg', format='jpeg', bayer=True)
+        self.camera.capture(output='../data/{timestamp:%H-%M-%S-%f.jpg}', format='jpeg', bayer=True)
 
     def capcontinuous(self):
         stream = io.BytesIO()
