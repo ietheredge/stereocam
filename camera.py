@@ -7,17 +7,18 @@ import io
 
 class App:
 
-    def __init__(self, imformat, vcodec, res, exposure, rate, itterations, outputfile):
+    def __init__(self, imformat, vcodec, res, exposure, rate, iteration, outputfile):
         # setup log
-        datlog = logging.getLogger('datalog')
-        hdlr = logging.FileHandler('log/datalog.log')
+        datlog = logging.getLogger('cameralog')
+        hdlr = logging.FileHandler('../log/cameralog.log')
         formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%m/%d/%Y:%H:%M:%S.%f")
         hdlr.setFormatter(formatter)
         datlog.addHandler(hdlr)
         datlog.setLevel(logging.INFO)
+
         ##datlog.info("camera initiated stack n= ",str(itterations)," format= ",str(imformat)," output to=",str(outputfile))
-        self.n = int(itterations)
-        self.out = outputfile
+        self.n = int(iteration)
+        self.out = '../data/','camera_',str(time.asctime()),'/',outputfile
 
         # setup camera
         self.camera = picamera.PiCamera()
@@ -26,6 +27,9 @@ class App:
         self.vcodec = vcodec
         self.camera.exposure_mode = exposure
         self.camera.framerate = int(rate)
+
+        logging.info('camera exposure setting:'+str(self.camera.exposure_mode))
+        logging.info('camera shutter speed:'+str(self.camera.shutter_speed))
         time.sleep(2)
 
     def capimage(self):
@@ -33,8 +37,6 @@ class App:
 
 
     def capimagestack(self):
-        logging.info('camera exposure setting:'+str(self.camera.exposure_mode))
-        logging.info('camera shutter speed:'+str(self.camera.shutter_speed))
         self.camera.capture_sequence((str(self.out)+'_%04d.jpg' % i for i in range(self.n)), use_video_port=False)
 
     def capvideo(self):
@@ -42,9 +44,13 @@ class App:
         time.sleep(self.n)
         self.camera.stop_recording()
 
-    def capRAW(self):
+    def capraw(self):
+        #stream = io.BytesIO()
+        camera.capture('{timestamp:%H-%M-%S-%f}.jpg', format='jpeg', bayer=True)
+
+    def capcontinuous(self):
         stream = io.BytesIO()
-        camera.capture(stream, format='jpeg', bayer=True)
+        camera.capture()
 
 
 if __name__=='__main__':
@@ -84,7 +90,7 @@ if __name__=='__main__':
     if args["codec"]:
         videocodec = str(args["codec"])
     else:
-        videocodec = 'yuv'
+        videocodec = 'h264'
     if args["number"]:
         num = args["number"]
     else:
