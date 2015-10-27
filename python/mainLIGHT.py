@@ -1,15 +1,22 @@
-import camera, checkdisk, checkbattery, RTIMU
+import python.checkdisk
+import python.checkbattery
+import RTIMU
+from python import camera, checkbattery, checkdisk
 import os
 import math
 import logging
 import time
 
+
+
+# '''
 divelog = logging.getLogger('divelog')
 hdlr = logging.FileHandler('../log/divelog.log')
 formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S.%f")
 hdlr.setFormatter(formatter)
 divelog.addHandler(hdlr)
 divelog.setLevel(logging.INFO)
+# '''
 
 SETTINGS_FILE = "../RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
@@ -41,6 +48,5 @@ for i in range (1,10):
                                         math.degrees(fusionPose[2])))
         if (data["temperatureValid"]):
             divelog.info("Temperature: %f" % (data["temperature"]))
-	time.sleep(poll_interval*1.0/1000.0)
 
-
+    time.sleep(poll_interval*1.0/1000.0)
