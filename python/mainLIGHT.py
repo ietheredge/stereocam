@@ -4,6 +4,7 @@ import os
 import math
 import logging
 import datetime
+import time
 
 SETTINGS_FILE = "../RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
