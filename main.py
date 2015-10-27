@@ -3,11 +3,13 @@ import multiprocessing
 import math
 import logging
 
-logging.basicConfig(filename='../log/divelog.log', level=logging.INFO)
+
+divelog = logging.getLogger('divelog')
+hdlr = logging.FileHandler('log/divelog.log')
 formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S-%f")
 hdlr.setFormatter(formatter)
-datlog.addHandler(hdlr)
-datlog.setLevel(logging.INFO)
+divelog.addHandler(hdlr)
+diveog.setLevel(logging.INFO)
 
 SETTINGS_FILE = "RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
