@@ -6,7 +6,7 @@ import logging
 import datetime
 import time
 
-SETTINGS_FILE = "../RTIMULib"
+SETTINGS_FILE = "../../RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
 if not os.path.exists(SETTINGS_FILE + ".ini"):
     divelog.info('Settings file does not exist, will be created')
