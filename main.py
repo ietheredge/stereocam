@@ -9,7 +9,7 @@ hdlr = logging.FileHandler('../log/divelog.log')
 formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S-%f")
 hdlr.setFormatter(formatter)
 divelog.addHandler(hdlr)
-diveog.setLevel(logging.INFO)
+divelog.setLevel(logging.INFO)
 
 SETTINGS_FILE = "RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
