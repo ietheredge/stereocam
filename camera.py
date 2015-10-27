@@ -74,7 +74,7 @@ if __name__=='__main__':
         resx, resy = args["resolution"].split("x")
         resolution = (int(resx), int(resy))
     else:
-        resolution = (1920, 1080)
+        resolution = '1920x1080'
     if args["exposure"]:
         exposure = args["exposure"]
     else:
