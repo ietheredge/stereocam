@@ -2,6 +2,7 @@ import picamera
 import logging
 import argparse
 import time
+import datetime
 import io
 
 
@@ -46,7 +47,7 @@ class App:
 
     def capraw(self):
         #stream = io.BytesIO()
-        self.camera.capture('../data/'+str(datetime.datetime.now().time.strftime('%H-%M-%S-%f'))+'.jpg' , format='jpeg', bayer=True)
+        self.camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+'.jpg' , format='jpeg', bayer=True)
 
     def capcontinuous(self):
         stream = io.BytesIO()
