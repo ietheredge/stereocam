@@ -62,7 +62,7 @@ if __name__=='__main__':
     ap.add_argument("-i", "--image", help="capture single image, takes no input", action='store_true')
     ap.add_argument("-r","--resolution", help="image resolution, default: 1920x1080")
     ap.add_argument("-e","--exposure", help="exposure mode, default: 'sports'")
-    ap.add_argument("-r", "--framerate", help="video framerate, default: 30")
+    ap.add_argument("-fr", "--framerate", help="video framerate, default: 30")
     ap.add_argument("-f", "--format", help="pass image file format")
     ap.add_argument("-vc", "--codec", help="pass the video codec to be used")
     ap.add_argument("-n", "--number", help="pass number of output objects or the length of video file in seconds")
