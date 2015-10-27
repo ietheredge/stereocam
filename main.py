@@ -1,6 +1,7 @@
 import camera, checkdisk, checkbattery, RTIMU
 import multiprocessing
 import math
+import logging
 
 logging.basicConfig(filename='../log/divelog.log', level=logging.INFO)
 formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S-%f")
