@@ -12,7 +12,7 @@ class App:
         # setup log
         datlog = logging.getLogger('cameralog')
         hdlr = logging.FileHandler('../log/cameralog.log')
-        formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%m/%d/%Y:%H:%M:%S.%f")
+        formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S-%f")
         hdlr.setFormatter(formatter)
         datlog.addHandler(hdlr)
         datlog.setLevel(logging.INFO)
