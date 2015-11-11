@@ -6,10 +6,10 @@ import logging
 import datetime
 import time
 
-SETTINGS_FILE = "../../RTIMULib"
+SETTINGS_FILE = "../../RTIMULib/Linux/RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
 if not os.path.exists(SETTINGS_FILE + ".ini"):
-    divelog.info('Settings file does not exist, will be created')
+    print('Settings file does not exist, will be created')
 imu = RTIMU.RTIMU(s)
 temp = RTIMU.RTPressure(s)
 if (not imu.IMUInit()):
@@ -29,6 +29,6 @@ for i in range (1,10):
         data = imu.getIMUData()
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
-        camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f-%f-%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
+        camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f" % data["temperature"])+str("_%f-%f-%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
                                         math.degrees(fusionPose[2])))+'.jpg' , format='jpeg', bayer=True)
     time.sleep(poll_interval*1.0/1000.0)
