@@ -14,7 +14,7 @@ sudo nano /etc/rc.local
  fi  
  exit 0   
  
-#The data used in is stored in two places in two places in the root folder. less sensitive stuff in a config file (.ini) the more sensitive stuff in the netrc file (/.netrc)
+#The data used is stored in two places in two places in the root folder. less sensitive stuff in a config file (.ini) the more sensitive stuff in the netrc file (/.netrc)
 
 #config file should be formatted like this:
 [Settings]  
