@@ -2,7 +2,7 @@
 #Housekeeping scripts to perform at start up of raspberrypi (running Raspbian)
 
 #You may need to:
-sudo chmod +x startup_mailer.py
+sudo chmod +x sendIPinfoemail.py
 
 #and in order to run this at start up edit:
 sudo nano /etc/rc.local
