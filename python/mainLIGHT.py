@@ -35,7 +35,7 @@ sun = whereisthesun.App(lat, lon)
 disk = checkdisk.App()
 
 while True:
-    availmem, usedmem, totatl = disk.chkdsk(memthreshold) # check that there is enough disk space, compress data if space is low
+    availmem, usedmem, totatl = disk.checkds(memthreshold) # check that there is enough disk space, compress data if space is low
     if battery.check(): # check battery level
         pass
     if imu.IMURead(): # read from calibrated IMU
