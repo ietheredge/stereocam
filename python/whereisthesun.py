@@ -7,7 +7,7 @@ class App:
 
     def __init__(self, lat, lon):
         #self.ll =  [lat,  lon]
-        self.itosunpinno = 5
+        self.intosunpinno = 5
         self.awayfromsunpinno = 6
         self.horizontalpinno = 26
         self.rig = ephem.Observer()
@@ -16,7 +16,7 @@ class App:
             self.latitudeD = lat
             self.longitudeD = lon
         else:
-            self.latitudeD, self.longitudeD = App().converttodecimal(lat, lon)
+            self.latitudeD, self.longitudeD = self.converttodecimal(lat, lon)
         self.rig.lon = str(self.longitudeD)
         self.rig.lat = str(self.latitudeD)
         self.rig.elevation = 0
@@ -24,7 +24,7 @@ class App:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.intosunpinno, GPIO.OUT)
         GPIO.setup(self.awayfromsunpinno, GPIO.OUT)
-        GPIO.setup(horizontalpinno, GPIO.OUT)
+        GPIO.setup(self.horizontalpinno, GPIO.OUT)
         #imutestdata = [(2*math.pi/180), (1*math.pi/180), ((240.48248682+180)*math.pi/180)]
 
     def converttodecimal(self, lat, lon):
@@ -32,6 +32,7 @@ class App:
         lndeg, lnmin, lnsec, lnhem = lon.split(":")
         self.latitudeD = (1 if lthem=="N" else -1)*(float(ltdeg)+(float(ltmin)/60)+(float(ltsec)/3600))
         self.longitudeD = (1 if lnhem=="E" else -1)*(float(lndeg)+(float(lnmin)/60)+(float(lnsec)/3600))
+        return self.latitudeD, self.longitudeD
 
     def checkkeyaxes(self, imuread, precision=22.5):
         # precision in degrees,
