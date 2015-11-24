@@ -1,7 +1,7 @@
 import python.checkdisk
 import python.checkbattery
 import RTIMU
-from python import camera, checkbattery, checkdisk
+import camera, checkbattery, checkdisk, whereisthesun
 import os
 import math
 import logging

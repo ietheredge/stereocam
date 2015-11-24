@@ -1,5 +1,5 @@
 import RTIMU
-import picamera, checkbattery, checkdisk
+import picamera, checkbattery, checkdisk, whereisthesun
 import os
 import math
 import logging
