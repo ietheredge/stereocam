@@ -53,7 +53,7 @@ class App:
         horizontal = (True if (-1*precision)<=imuroll<=precision and (-1*precision)<=imupitch<=precision else False)
         inlinewithsun = (True if (altitude-precision)<=imupitch<=(altitude+precision) else False)
         self.callleds(intosun, awayfromsun, horizontal)
-        return intosun, awayfromsun, horizontal, altdeg, azdeg
+        return intosun, awayfromsun, horizontal, altitude, azimuth
 
     def callleds(self, its, afs, h):
         if its:
