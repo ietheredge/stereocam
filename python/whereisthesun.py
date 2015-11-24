@@ -16,7 +16,7 @@ class App:
             self.latitudeD = lat
             self.longitudeD = lon
         else:
-            self.latitudeD, self.longitudeD = App.converttodecimal(lat, lon)
+            self.latitudeD, self.longitudeD = App().converttodecimal(lat, lon)
         self.rig.lon = str(self.longitudeD)
         self.rig.lat = str(self.latitudeD)
         self.rig.elevation = 0
