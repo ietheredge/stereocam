@@ -43,8 +43,8 @@ while True:
     intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data) # use IMU data to determine orientation relative to sun and send signal to indicator LEDS
 
     for i in range (1,10): # record data
-            (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
-            fusionPose = data["fusionPose"]
-            camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f" % data["temperature"])+str("_%f-%f-%f_%s_%f_%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
-                                            math.degrees(fusionPose[2])), ('I' if intosunx==True else 'A' if awayfromsun==True else 'P'), sunalt, sunaz)+'.jpg' , format='jpeg', bayer=True)
+        (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
+        fusionPose = data["fusionPose"]
+        camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f" % data["temperature"])+str("_%f-%f-%f_%s_%f_%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
+                                        math.degrees(fusionPose[2])), ('I' if intosunx==True else 'A' if awayfromsun==True else 'P'), sunalt, sunaz)+'.jpg' , format='jpeg', bayer=True)
         time.sleep(poll_interval*1.0/1000.0)
