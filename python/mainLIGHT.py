@@ -38,16 +38,17 @@ disk = checkdisk.App()
 availmem, usedmem, totatl = disk.checkds(memthreshold) # check that there is enough disk space, compress data if space is low
 if battery.check(): # check battery level
     pass
-if imu.IMURead(): # read from calibrated IMU
-    data = imu.getIMUData()
-intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data) # use IMU data to determine orientation relative to sun and send signal to indicator LEDS
+# use IMU data to determine orientation relative to sun and send signal to indicator LEDS
 print sunalt
 print sunaz
 for i in range (1,N): # record data
-    (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
-    fusionPose = data["fusionPose"]
-    # record image/RAW with time, imu data, sun heading, and solar angle data as name
-    camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f" % data["temperature"])+str("_%f_%f_%f_%s_%f_%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
-                                    math.degrees(fusionPose[2]), ('I' if intosun==True else 'A' if awayfromsun==True else 'P'), sunalt, sunaz))+'.jpg' , format='jpeg', bayer=True)
+    if imu.IMURead(): # read from calibrated IMU
+        data = imu.getIMUData()
+        intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
+        (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
+        fusionPose = data["fusionPose"]
+        # record image/RAW with time, imu data, sun heading, and solar angle data as name
+        camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f" % data["temperature"])+str("_%f_%f_%f_%s_%f_%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
+                                        math.degrees(fusionPose[2]), ('I' if intosun==True else 'A' if awayfromsun==True else 'P'), sunalt, sunaz))+'.jpg' , format='jpeg', bayer=True)
 
 time.sleep(poll_interval*1.0/1000.0)
