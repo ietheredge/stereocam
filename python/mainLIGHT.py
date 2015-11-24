@@ -32,10 +32,10 @@ poll_interval = imu.IMUGetPollInterval()
 camera = picamera.PiCamera()
 battery = checkbattery.App()
 sun = whereisthesun.App(lat, lon)
-disk = checkdisk()
+disk = App.checkdisk()
 
 while True:
-    availmem, usedmem, totatl = checkdisk.chkdsk(memthreshold) # check that there is enough disk space, compress data if space is low
+    availmem, usedmem, totatl = disk.chkdsk(memthreshold) # check that there is enough disk space, compress data if space is low
     if battery.check(): # check battery level
         pass
     if imu.IMURead(): # read from calibrated IMU
