@@ -110,5 +110,3 @@ if __name__=='__main__':
         kamera.capvideo()
     if args["stack"]:
         kamera.capimagestack()
-
-

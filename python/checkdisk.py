@@ -34,5 +34,3 @@ if __name__=="__main__":
 
     chkdsk = App()
     availds = chkdsk.checkds(args["critthresh"])
-
-
