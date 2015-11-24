@@ -5,7 +5,7 @@ import argparse
 
 class App:
 
-    def __init__(self, lat, lon)
+    def __init__(self, lat, lon):
         #self.ll =  [lat,  lon]
         self.itosunpinno = 5
         self.awayfromsunpinno = 6
