@@ -6,7 +6,7 @@ import logging
 import datetime
 import time
 
-
+N = 100 #number of images to grab in each stack
 lat = "27:36:20.80:N" #approximate lattitude, you could have a gps output this directly, but this project is aimed for underwater use (no GPS)
 lon = "95:45:20.00:W" #approximate longitude
 memthreshold = 2000 #memmory threshold, in kbs
@@ -34,20 +34,20 @@ battery = checkbattery.App()
 sun = whereisthesun.App(lat, lon)
 disk = checkdisk.App()
 
-while True:
-    availmem, usedmem, totatl = disk.checkds(memthreshold) # check that there is enough disk space, compress data if space is low
-    if battery.check(): # check battery level
-        pass
-    if imu.IMURead(): # read from calibrated IMU
-        data = imu.getIMUData()
-    intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data) # use IMU data to determine orientation relative to sun and send signal to indicator LEDS
-    print sunalt
-    print sunaz
-    for i in range (1,10): # record data
-        (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
-        fusionPose = data["fusionPose"]
-        # record image/RAW with time, imu data, sun heading, and solar angle data as name
-        camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f" % data["temperature"])+str("_%f-%f-%f_%s_%f_%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
-                                        math.degrees(fusionPose[2]), ('I' if intosun==True else 'A' if awayfromsun==True else 'P'), sunalt, sunaz))+'.jpg' , format='jpeg', bayer=True)
 
-    time.sleep(poll_interval*1.0/1000.0)
+availmem, usedmem, totatl = disk.checkds(memthreshold) # check that there is enough disk space, compress data if space is low
+if battery.check(): # check battery level
+    pass
+if imu.IMURead(): # read from calibrated IMU
+    data = imu.getIMUData()
+intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data) # use IMU data to determine orientation relative to sun and send signal to indicator LEDS
+print sunalt
+print sunaz
+for i in range (1,N): # record data
+    (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
+    fusionPose = data["fusionPose"]
+    # record image/RAW with time, imu data, sun heading, and solar angle data as name
+    camera.capture('../data/'+str(datetime.datetime.now().strftime('%H-%M-%S-%f'))+str("_%f" % data["temperature"])+str("_%f-%f-%f_%s_%f_%f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
+                                    math.degrees(fusionPose[2]), ('I' if intosun==True else 'A' if awayfromsun==True else 'P'), sunalt, sunaz))+'.jpg' , format='jpeg', bayer=True)
+
+time.sleep(poll_interval*1.0/1000.0)
