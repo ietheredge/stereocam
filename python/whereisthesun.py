@@ -52,7 +52,7 @@ class App:
                        ((azimuth-precision)-180)<=imuyaw<=((azimuth+precision)-180) else False)
         horizontal = (True if (-1*precision)<=imuroll<=precision and (-1*precision)<=imupitch<=precision else False)
         inlinewithsun = (True if (altitude-precision)<=imupitch<=(altitude+precision) else False)
-        callleds(intosun, awayfromsun, horizontal)
+        self.callleds(intosun, awayfromsun, horizontal)
         return intosun, awayfromsun, horizontal, sunalt, sunaz
 
     def callleds(self, its, afs, h):
