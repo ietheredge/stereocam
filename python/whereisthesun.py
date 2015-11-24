@@ -34,14 +34,14 @@ class App:
         self.longitudeD = (1 if lnhem=="E" else -1)*(float(lndeg)+(float(lnmin)/60)+(float(lnsec)/3600))
         return self.latitudeD, self.longitudeD
 
-    def checkkeyaxes(self, imuread, precision=22.5):
+    def checkkeyaxes(self, imudata, precision=22.5):
         # precision in degrees,
         #i.e. +/- degrees from direction
         # roll, pitch, yaw should be adjusted to account for the orientation of the IMU
         s=ephem.Sun(self.rig)
         sunalt = str(s.alt)
         sunaz = str(s.az)
-
+        imuread = imudata["fusionPose"]
         imuroll, imupitch, imuyaw = math.degrees(imuread[0]), math.degrees(imuread[1]),math.degrees(imuread[2]) # x, y, z
         altdeg, altmin, altsec = sunalt.split(":")
         azdeg, azmin, azsec = sunaz.split(":")
