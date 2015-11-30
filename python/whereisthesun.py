@@ -58,7 +58,7 @@ class App:
     def callleds(self, its, afs, h):
         if its:
             print True
-            GPIO.output(self.itosunpinno, GPIO.HIGH)
+            GPIO.output(self.intosunpinno, GPIO.HIGH)
         if afs:
             print True
             GPIO.output(self.awayfromsunpinno, GPIO.HIGH)
