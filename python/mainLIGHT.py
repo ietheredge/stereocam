@@ -39,12 +39,13 @@ availmem, usedmem, totatl = disk.checkds(memthreshold) # check that there is eno
 if battery.check(): # check battery level
     pass
 # use IMU data to determine orientation relative to sun and send signal to indicator LEDS
-print sunalt
-print sunaz
+#print sunalt
+#print sunaz
 for i in range (1,N): # record data
     if imu.IMURead(): # read from calibrated IMU
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
+        sun.callleds(intosun, awayfromsun, horizontal)
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
         # record image/RAW with time, imu data, sun heading, and solar angle data as name
