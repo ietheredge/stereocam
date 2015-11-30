@@ -57,14 +57,23 @@ class App:
 
     def callleds(self, its, afs, h):
         if its:
-            print True
+            print 'into: ',True
             GPIO.output(self.intosunpinno, GPIO.HIGH)
         if afs:
-            print True
+            print 'awayfrom: ',True
             GPIO.output(self.awayfromsunpinno, GPIO.HIGH)
         if h:
-            print True
+            print 'horizontal: ',True
             GPIO.output(self.horizontalpinno, GPIO.HIGH)
+        if not its:
+            print True
+            GPIO.output(self.intosunpinno, GPIO.LOW)
+        if not afs:
+            print True
+            GPIO.output(self.awayfromsunpinno, GPIO.LOW)
+        if not h:
+            print True
+            GPIO.output(self.horizontalpinno, GPIO.LOW)
 
     def clearleds(self):
         GPIO.output(self.intosunpinno, GPIO.LOW)
