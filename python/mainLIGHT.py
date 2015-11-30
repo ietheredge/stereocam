@@ -6,7 +6,7 @@ import logging
 import datetime
 import time
 
-N = 20 #number of images to grab in each stack
+N = 100 #number of images to grab in each stack
 lat = "27:36:20.80:N" #approximate lattitude, you could have a gps output this directly, but this project is aimed for underwater use (no GPS)
 lon = "95:45:20.00:W" #approximate longitude
 memthreshold = 2000 #memmory threshold, in kbs
