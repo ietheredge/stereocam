@@ -66,13 +66,13 @@ class App:
             print 'horizontal: ',True
             GPIO.output(self.horizontalpinno, GPIO.HIGH)
         if not its:
-            print True
+            print 'into: ', False
             GPIO.output(self.intosunpinno, GPIO.LOW)
         if not afs:
-            print True
+            print 'awayfrom: ', False
             GPIO.output(self.awayfromsunpinno, GPIO.LOW)
         if not h:
-            print True
+            print 'horizontal: ', False
             GPIO.output(self.horizontalpinno, GPIO.LOW)
 
     def clearleds(self):
