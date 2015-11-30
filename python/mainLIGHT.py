@@ -53,3 +53,4 @@ for i in range (1,N): # record data
                                         math.degrees(fusionPose[2]), ('I' if intosun==True else 'A' if awayfromsun==True else 'P'), sunalt, sunaz))+'.jpg' , format='jpeg', bayer=True)
 
 time.sleep(poll_interval*1.0/1000.0)
+sun.clearleds()

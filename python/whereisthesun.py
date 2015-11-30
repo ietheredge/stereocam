@@ -66,6 +66,11 @@ class App:
             print True
             GPIO.output(self.horizontalpinno, GPIO.HIGH)
 
+    def clearleds(self):
+        GPIO.output(self.intosunpinno, GPIO.LOW)
+        GPIO.output(self.awayfromsunpinno, GPIO.LOW)
+        GPIO.output(self.horizontalpinno, GPIO.LOW)
+
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument("-lat", "--latitude", help="site latitude")
