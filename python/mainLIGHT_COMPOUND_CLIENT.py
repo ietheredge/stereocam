@@ -83,7 +83,8 @@ while True:
         sun.callleds(intosun, awayfromsun, horizontal)
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
-        datlog.info('IMU:'+str(fusionPose))
+        datlog.info('IMU:'+str("_%f_%f_%f_%s_%f_%f" % (math.degrees(fusionPose[0]),
+                        math.degrees(fusionPose[1]), math.degrees(fusionPose[2]))))
         print cameraclient.status().items()
         time.sleep(poll_interval*1.0/1000.0)
 
