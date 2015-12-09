@@ -88,7 +88,7 @@ while True:
         print cameraclient.status().items()
         time.sleep(poll_interval*1.0/1000.0)
     finally:
-        for addr, files in client.list().items():
+        for addr, files in cameraclient.list().items():
             for f in files:
                 with io.open('%s-%d.jpg' % (addr, f.index)) as f:
                     cameraclient.download(addr. f.index, f)
