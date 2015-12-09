@@ -50,7 +50,7 @@ poll_interval = imu.IMUGetPollInterval()
 ## cameras
 cameraclient = CompoundPiClient()
 cameraclient.servers.network = network
-cameraclient.servers.find() #should return 2 cameras
+cameraclient.servers.find(2) #should return 2 cameras
 cameraclient.resolution(1920, 1080)
 cameraclient.identify() #simultaneous blinking camera lights = ready to go
 
@@ -68,21 +68,15 @@ while True:
     #availmem, usedmem, totatl = disk.checkds(memthreshold)
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)
-        if GPIO.INPUT(switchGPIO):
-            camera.capture(stacksize) #record synchronized image stack
-            #camera.record(5)
-        else:
-            camera.record(10) #record synchronized video
-
+        cameraclient.record(5) #record synchronized image stack
+        cameraclient.record(10) #record synchronized video
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
         sun.callleds(intosun, awayfromsun, horizontal)
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
         logging.info('IMU:'+str(fusionPose))
-
         time.sleep(poll_interval*1.0/1000.0)
-        sun.clearleds()
 
     except KeyboardInterrupt:
         cameraclient.close()
