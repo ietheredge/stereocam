@@ -51,7 +51,7 @@ poll_interval = imu.IMUGetPollInterval()
 ## cameras
 cameraclient = CompoundPiClient()
 cameraclient.servers.network = network
-cameraclient.servers.find(2) #should return 2 cameras
+cameraclient.servers.find() #should return 2 cameras
 cameraclient.resolution(1920, 1080)
 cameraclient.agc('auto')
 cameraclient.awb('off', 1.5, 1.3)
