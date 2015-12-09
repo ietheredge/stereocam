@@ -25,14 +25,14 @@ GPIO.setup(switchGPIO, GPIO.IN) # switch
 
 ##IMU data log
 datlog = logging.getLogger('IMUlog')
-hdlr = logging.FileHandler('/home/pi/imageIMUsync/log/IMUlog.log')
+hdlr = logging.FileHandler('home/pi/imageIMUsync/log/IMUlog.log')
 formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S-%f")
 hdlr.setFormatter(formatter)
 datlog.addHandler(hdlr)
 datlog.setLevel(logging.INFO)
 
 ## imu data, be sure to calibrate properly before using this for data collection (see: github.com/Richards-Tech/RTIMULib)
-SETTINGS_FILE = "/home/pi/RTIMULib/Linux/python/tests/RTIMULib"
+SETTINGS_FILE = "home/pi/RTIMULib/Linux/python/tests/RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
 if not os.path.exists(SETTINGS_FILE + ".ini"):
     print('Settings file does not exist, will be created')
@@ -78,7 +78,7 @@ while True:
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)
         cameraclient.capture(5, delay=0.25) #record synchronized image stack
-        cameraclient.record(10, format=u'h264', delay=0.5) #record synchronized video
+        #cameraclient.record(10, format=u'h264', delay=0.5) #record synchronized video
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
         sun.callleds(intosun, awayfromsun, horizontal)
