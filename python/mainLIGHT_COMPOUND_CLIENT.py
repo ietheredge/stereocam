@@ -92,7 +92,7 @@ while True:
         for addr, files in cameraclient.list().items():
             for f in files:
                 with io.open('%s-%d.jpg' % (addr, f.index)) as f:
-                    cameraclient.download(addr. f.index, f)
+                    cameraclient.download(addr, f.index, f)
         cameraclient.clear()
         GPIO.cleanup()       # clean up GPIO on CTRL+C exit
 
