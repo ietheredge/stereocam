@@ -17,8 +17,8 @@ memthreshold = 2000 #memmory threshold, in kbs
 
 ##trigger and switch inputs
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(triggerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(switchGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(triggerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP) # interrupt
+GPIO.setup(switchGPIO, GPIO.IN) # switch
 
 ##IMU data log
 datlog = logging.getLogger('IMUlog')
