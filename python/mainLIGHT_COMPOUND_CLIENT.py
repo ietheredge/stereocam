@@ -48,7 +48,7 @@ imu.setCompassEnable(True)
 poll_interval = imu.IMUGetPollInterval()
 
 ## cameras
-cameraclient = CompoundPiClient
+cameraclient = CompoundPiClient()
 cameraclient.network = network
 cameraclient.servers.find() #should return 2 cameras
 cameraclient.resolution(1920, 1080)
