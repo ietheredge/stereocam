@@ -6,6 +6,7 @@ import logging
 import datetime
 import time
 import RPi.GPIO as GPIO
+import io
 from compoundpi.client import CompoundPiClient
 
 
