@@ -66,7 +66,7 @@ while True:
     #availmem, usedmem, totatl = disk.checkds(memthreshold)
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)
-        if GPIO.INPUT(switchGPIO)
+        if GPIO.INPUT(switchGPIO):
             camera.capture(stacksize) #record synchronized image stack
             #camera.record(5)
         else:
