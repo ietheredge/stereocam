@@ -68,15 +68,15 @@ while True:
     #availmem, usedmem, totatl = disk.checkds(memthreshold)
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)
-        cameraclient.record(5) #record synchronized image stack
-        cameraclient.record(10) #record synchronized video
+        cameraclient.capture(5, delay=0.25) #record synchronized image stack
+        cameraclient.record(10, delay=0.25) #record synchronized video
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
         sun.callleds(intosun, awayfromsun, horizontal)
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
         logging.info('IMU:'+str(fusionPose))
-        cameraclient.list()
+        cameraclient.status.files()
         time.sleep(poll_interval*1.0/1000.0)
 
     except KeyboardInterrupt:
