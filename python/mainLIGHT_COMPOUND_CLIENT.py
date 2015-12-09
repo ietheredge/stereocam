@@ -52,6 +52,14 @@ cameraclient = CompoundPiClient()
 cameraclient.servers.network = network
 cameraclient.servers.find(2) #should return 2 cameras
 cameraclient.resolution(1920, 1080)
+cameraclient.agc('auto')
+cameraclient.awb('off', 1.5, 1.3)
+cameraclient.iso(100)
+cameraclient.metering('spot')
+cameraclient.brightness(50)
+cameraclient.contrast(0)
+cameraclient.saturation(0)
+cameraclient.denoise(False)
 cameraclient.identify() #simultaneous blinking camera lights = ready to go
 
 
@@ -69,14 +77,14 @@ while True:
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)
         cameraclient.capture(5, delay=0.25) #record synchronized image stack
-        cameraclient.record(10, delay=0.25) #record synchronized video
+        cameraclient.record(10, format=u'h264', delay=0.25) #record synchronized video
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
         sun.callleds(intosun, awayfromsun, horizontal)
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
-        logging.info('IMU:'+str(fusionPose))
-        cameraclient.status.files()
+        datlog.info('IMU:'+str(fusionPose))
+        print cameraclient.status().items()
         time.sleep(poll_interval*1.0/1000.0)
 
     except KeyboardInterrupt:
