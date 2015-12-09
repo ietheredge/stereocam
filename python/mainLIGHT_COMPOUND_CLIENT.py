@@ -5,7 +5,9 @@ import math
 import logging
 import datetime
 import time
+import RPi.GPIO as GPIO
 from compoundpi.client import CompoundPiClient
+
 
 switchGPIO = 24
 triggerGPIO = 23
