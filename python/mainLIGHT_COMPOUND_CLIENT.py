@@ -83,13 +83,17 @@ while True:
         sun.callleds(intosun, awayfromsun, horizontal)
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
-        datlog.info('IMU:'+str("%f_%f_%f" % (math.degrees(fusionPose[0]),
-                        math.degrees(fusionPose[1]), math.degrees(fusionPose[2]))))
+        datlog.info("r: %f p: %f y: %f quadrant: %s solarangle: %f, %f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
+                                        math.degrees(fusionPose[2]), ('into sun' if intosunx==True else 'away from sun' if awayfromsun==True else 'perpendicular to sun'), sunalt, sunaz)
         print cameraclient.status().items()
         time.sleep(poll_interval*1.0/1000.0)
 
-    except KeyboardInterrupt:
-        cameraclient.close()
+    finally:
+        for addr, files in client.list().items():
+            for f in files:
+                with io.open('%s-%d.jpg' % (addr, f.index)) as f:
+                    cameraclient.download(addr. f.index, f)
+        cameraclient.clear()
         GPIO.cleanup()       # clean up GPIO on CTRL+C exit
 
 
