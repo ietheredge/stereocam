@@ -79,6 +79,7 @@ while True:
         time.sleep(poll_interval*1.0/1000.0)
 
     except KeyboardInterrupt:
+        cameraclient.list()
         cameraclient.close()
         GPIO.cleanup()       # clean up GPIO on CTRL+C exit
 
