@@ -76,10 +76,10 @@ while True:
         (data["pressureValid"], data["pressure"], data["temperatureValid"], data["temperature"]) = temp.pressureRead()
         fusionPose = data["fusionPose"]
         logging.info('IMU:'+str(fusionPose))
+        cameraclient.list()
         time.sleep(poll_interval*1.0/1000.0)
 
     except KeyboardInterrupt:
-        cameraclient.list()
         cameraclient.close()
         GPIO.cleanup()       # clean up GPIO on CTRL+C exit
 
