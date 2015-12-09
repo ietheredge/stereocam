@@ -88,14 +88,19 @@ while True:
                                         math.degrees(fusionPose[2]), ('into sun' if intosunx==True else 'away from sun' if awayfromsun==True else 'perpendicular to sun'), sunalt, sunaz))
         print cameraclient.status().items()
         time.sleep(poll_interval*1.0/1000.0)
-    finally:
-        for addr, files in cameraclient.list().items():
-            for f in files:
-                with io.open('%s-%d.jpg' % (addr, f.index)) as f:
-                    cameraclient.download(addr, f.index, f)
-        cameraclient.clear()
-        GPIO.cleanup()       # clean up GPIO on CTRL+C exit
 
+        try:
+            for addr, files in cameraclient.list().items():
+                for f in files:
+                    with io.open('%s-%d.jpg' % (addr, f.index)) as f:
+                        cameraclient.download(addr, f.index, f)
+        finally:
+            cameraclient.clear()
+    except KeyboardInterrupt:
+        cameraclient.clear()
+        cameraclient.close()
+        GPIO.cleanup()       # clean up GPIO on CTRL+C exit
+        exit()
 
 cameraclient.close()
 GPIO.cleanup()
