@@ -49,7 +49,7 @@ poll_interval = imu.IMUGetPollInterval()
 
 ## cameras
 cameraclient = CompoundPiClient()
-cameraclient.network = network
+cameraclient.servers.network = network
 cameraclient.servers.find() #should return 2 cameras
 cameraclient.resolution(1920, 1080)
 cameraclient.identify() #simultaneous blinking camera lights = ready to go
