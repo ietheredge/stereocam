@@ -77,7 +77,7 @@ while True:
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)
         cameraclient.capture(5, delay=0.25) #record synchronized image stack
-        cameraclient.record(10, format=u'h264', delay=0.25) #record synchronized video
+        cameraclient.record(10, format=u'h264', delay=0.5) #record synchronized video
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
         sun.callleds(intosun, awayfromsun, horizontal)
