@@ -91,12 +91,12 @@ while True:
 
         try:
             for addr, files in cameraclient.list().items():
+                for f in files:
                     assert f.filetype == 'IMAGE'
                     print f
                     print addr
-                    print camera
-                    print f.timestamp
-                    with io.open('%s_%f.jpg' % (addr,f.timestamp), 'wb') as output:
+                    print ('%H-%M-%S-%f' % f.timestamp)
+                    with io.open('%s_%H-%M-%S-%f.jpg' % (addr,f.timestamp), 'wb') as output:
                         cameraclient.download(addr, f.index, output)
         finally:
             cameraclient.clear()
