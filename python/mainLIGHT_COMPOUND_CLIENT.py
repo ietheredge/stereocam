@@ -62,6 +62,13 @@ cameraclient.contrast(0)
 cameraclient.saturation(0)
 cameraclient.denoise(False)
 cameraclient.identify() #simultaneous blinking camera lights = ready to go
+responses = cameraclient.status()
+min_time = min(status.timestamp for status in responses.values())
+for address, status in responses.items():
+        if (status.timestamp - min_time).total_seconds() > 0.1:
+            print(
+                'Warning: time on %s deviates from minimum '
+                'by >0.1 seconds' % address)
 
 
 ## disk check and sun data
@@ -88,6 +95,7 @@ while True:
                                         math.degrees(fusionPose[2]), ('into sun' if intosun==True else 'away from sun' if awayfromsun==True else 'perpendicular to sun'), sunalt, sunaz))
         print cameraclient.status().items()
         time.sleep(poll_interval*1.0/1000.0)
+
 
         try:
             for addr, files in cameraclient.list().items():
