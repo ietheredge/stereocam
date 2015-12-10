@@ -108,7 +108,7 @@ while True:
                         cameraclient.download(addr, f.index, output)
         finally:
             cameraclient.clear()
-            cameraclient.close()
+            #cameraclient.close()
     except KeyboardInterrupt:
         cameraclient.clear()
         cameraclient.close()
