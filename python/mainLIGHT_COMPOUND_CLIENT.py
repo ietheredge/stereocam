@@ -95,7 +95,7 @@ while True:
                     assert f.filetype == 'IMAGE'
                     print f
                     print addr
-                    print ('%H-%M-%S-%f' % f.timestamp)
+                    print f.timestamp
                     with io.open('%s_%H-%M-%S-%f.jpg' % (addr,f.timestamp), 'wb') as output: #
                         cameraclient.download(addr, f.index, output)
         finally:
