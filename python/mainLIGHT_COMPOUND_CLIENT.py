@@ -96,7 +96,7 @@ while True:
                     print f
                     print addr
                     print f.timestamp
-                    with io.open('%s_%H-%M-%S-%f.jpg' % (addr,f.timestamp), 'wb') as output: #
+                    with io.open('%s_%s.jpg' % (addr,f.timestamp), 'wb') as output: #
                         cameraclient.download(addr, f.index, output)
         finally:
             cameraclient.clear()
