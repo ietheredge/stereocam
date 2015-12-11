@@ -12,7 +12,7 @@ from compoundpi.client import CompoundPiClient
 
 # waitfor pi function
 def waitforpisignal(GPIOPINNo):
-    while wait == True:
+    while wait:
         if GPIO.input(GPIOPINNo):
             wait = False
         else:
