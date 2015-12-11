@@ -15,10 +15,11 @@ def waitforpisignal(GPIOPINNo, wait):
     while wait:
         print 'waiting'
         if GPIO.input(GPIOPINNo):
-            print 'message recieved'   
-	    wait = False
+            print' waiting'
+	    pass   
         else:
-            pass
+            wait = False
+            print 'message recieved'
 
 ## variables defined
 wait = True
