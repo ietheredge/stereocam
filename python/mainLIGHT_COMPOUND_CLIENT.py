@@ -11,7 +11,7 @@ import sys
 from compoundpi.client import CompoundPiClient
 
 # waitfor pi function
-def waitforpisignal(GPIOPINNo):
+def waitforpisignal(GPIOPINNo, wait):
     while wait:
         print 'waiting'
         if GPIO.input(GPIOPINNo):
@@ -36,7 +36,7 @@ GPIO.setup(triggerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP) # interrupt
 GPIO.setup(pi2piGPIO, GPIO.IN) # switch
 
 ## wait for pi2 to come online
-waitforpisignal(pi2piGPIO)
+waitforpisignal(pi2piGPIO, wait)
 
 ## data log
 datlog = logging.getLogger('IMUlog')
