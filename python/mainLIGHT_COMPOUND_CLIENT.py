@@ -7,11 +7,21 @@ import datetime
 import time
 import RPi.GPIO as GPIO
 import io
+import sys
 from compoundpi.client import CompoundPiClient
 
+# waitfor pi function
+def waitforpisignal(GPIOPINNo):
+    while wait == True:
+        if GPIO.input(GPIOPINNo):
+            wait = False
+        else:
+            pass
 
-switchGPIO = 24
+## variables defined
+wait = True
 triggerGPIO = 23
+pi2piGPIO = 24
 network = '128.83.0.0/16' #IP range for pis connected to network
 stacksize = 10 #number of images to grab in each stack
 lat = "27:36:20.80:N" #approximate lattitude, you could have a gps output this directly, but this project is aimed for underwater use (no GPS)
@@ -21,9 +31,12 @@ memthreshold = 2000 #memmory threshold, in kbs
 ##trigger and switch inputs
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(triggerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP) # interrupt
-GPIO.setup(switchGPIO, GPIO.IN) # switch
+GPIO.setup(pi2piGPIO, GPIO.IN) # switch
 
-##IMU data log
+## wait for pi2 to come online
+waitforpisignal(pi2piGPIO)
+
+## data log
 datlog = logging.getLogger('IMUlog')
 hdlr = logging.FileHandler('home/pi/imageIMUsync/log/IMUlog.log')
 formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S-%f")
@@ -31,7 +44,7 @@ hdlr.setFormatter(formatter)
 datlog.addHandler(hdlr)
 datlog.setLevel(logging.INFO)
 
-## imu data, be sure to calibrate properly before using this for data collection (see: github.com/Richards-Tech/RTIMULib)
+## imu set up, be sure to calibrate properly before using this for data collection (see: github.com/Richards-Tech/RTIMULib)
 SETTINGS_FILE = "home/pi/RTIMULib/Linux/python/tests/RTIMULib"
 s = RTIMU.Settings(SETTINGS_FILE)
 if not os.path.exists(SETTINGS_FILE + ".ini"):
@@ -65,10 +78,10 @@ cameraclient.identify() #simultaneous blinking camera lights = ready to go
 responses = cameraclient.status()
 min_time = min(status.timestamp for status in responses.values())
 for address, status in responses.items():
-        if (status.timestamp - min_time).total_seconds() > 0.1:
-            print(
-                'Warning: time on %s deviates from minimum '
+        if (status.timestamp - min_time).total_seconds() > 0.3:
+            print('Warning: time on %s deviates from minimum '
                 'by >0.1 seconds' % address)
+
 
 
 ## disk check and sun data
@@ -104,16 +117,16 @@ while True:
                     print f
                     print addr
                     print f.timestamp
-                    with io.open('%s_%s.jpg' % (addr,f.timestamp), 'wb') as output: #
+                    with io.open('%s_%s.jpg' % (addr,f.timestamp), 'wb') as output: #need to change timestamp format (currently includes spaces/not scp-usable)
                         cameraclient.download(addr, f.index, output)
         finally:
             cameraclient.clear()
-            #cameraclient.close()
     except KeyboardInterrupt:
         cameraclient.clear()
         cameraclient.close()
         GPIO.cleanup()       # clean up GPIO on CTRL+C exit
-        exit()
+        break
 
 cameraclient.close()
 GPIO.cleanup()
+exit()
