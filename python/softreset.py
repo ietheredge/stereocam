@@ -9,12 +9,12 @@ class App():
         self.led1 = 17
         self.led2 = 27
         self.led3 = 22
-        GPIO.setup(self.pin, GPIO.IN)
+        GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.led1, GPIO.OUT)
-        GPIO.setup(self.led1, GPIO.OUT)
-        GPIO.setup(self.led1, GPIO.OUT)
+        GPIO.setup(self.led2, GPIO.OUT)
+        GPIO.setup(self.led3, GPIO.OUT)
         GPIO.remove_event_detect(self.pin)
-        GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=App.shutitdown(self))
+        GPIO.add_event_detect(self.pin, GPIO.FALLING, callback=App.shutitdown(self))
 
 
 
