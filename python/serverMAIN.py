@@ -24,7 +24,7 @@ sendpisignal(pi2piGPIO, wait)
 os.chdir('/')
 ## data log
 datlog = logging.getLogger('IMUlog')
-hdlr = logging.FileHandler('home/pi/imageIMUsync/log/IMUlog.log')
+hdlr = logging.FileHandler('home/pi/imageIMUSync/log/IMUlog.log')
 formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s', "%H-%M-%S-%f")
 hdlr.setFormatter(formatter)
 datlog.addHandler(hdlr)
