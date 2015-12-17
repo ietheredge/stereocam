@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import os
 import io
 from compoundpi.client import CompoundPiClient
 
