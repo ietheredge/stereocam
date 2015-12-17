@@ -7,9 +7,9 @@ class App:
 
     def __init__(self, lat, lon):
         #self.ll =  [lat,  lon]
-        self.intosunpinno = 5
-        self.awayfromsunpinno = 6
-        self.horizontalpinno = 26
+        self.intosunpinno = 17
+        self.awayfromsunpinno = 27
+        self.horizontalpinno = 22
         self.rig = ephem.Observer()
 
         if isinstance(lat, float):
