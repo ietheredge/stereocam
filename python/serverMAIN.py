@@ -1,5 +1,5 @@
 import RTIMU
-import checkbattery, checkdisk, whereisthesun
+import checkbattery, checkdisk, whereisthesun, softreset
 import os
 import math
 import logging
@@ -47,9 +47,12 @@ imu.setAccelEnable(True)
 imu.setCompassEnable(True)
 poll_interval = imu.IMUGetPollInterval()
 
-## disk check and sun data
+## disk check and 0sun data
 sun = whereisthesun.App(lat, lon)
 disk = checkdisk.App()
+
+## shutdown switch
+down = softreset.App()
 # check that there is enough disk space, compress data if space is low
 # use IMU data to determine orientation relative to sun and send signal to indicator LEDS
 #print sunalt
@@ -57,6 +60,7 @@ disk = checkdisk.App()
 
 
 while True:
+        down.listen()
     #availmem, usedmem, totatl = disk.checkds(memthreshold)
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)

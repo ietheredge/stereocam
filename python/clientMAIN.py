@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import os
 import io
+import softreset
 from compoundpi.client import CompoundPiClient
 
 # waitfor pi function
@@ -32,6 +33,9 @@ waitforpisignal(pi2piGPIO, wait)
 
 ## set
 os.chdir('/')
+
+## shutdown switch
+down = softreset.App()
 
 ## cameras
 cameraclient = CompoundPiClient()
