@@ -45,4 +45,4 @@ class App():
 if __name__ == '__main__':
     sudohalt = App()
     while True:
-        App.listen()
+        sudohalt.listen()
