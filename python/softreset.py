@@ -17,7 +17,9 @@ class App():
     def listen(self):
         try:
             time.sleep(0.25)
+            #print 'ok'
             GPIO.wait_for_edge(self.pin, GPIO.FALLING)
+            #print 'ok'
             GPIO.output(self.led1, GPIO.HIGH)
             time.sleep(0.1)
             GPIO.output(self.led1, GPIO.LOW)
@@ -39,7 +41,7 @@ class App():
             print 'shutting down'
             call(["sudo", "halt"])
         except:
-            print 'running'
+            #print 'running'
             pass
 
 
