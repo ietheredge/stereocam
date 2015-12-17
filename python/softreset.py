@@ -9,7 +9,7 @@ class App():
         self.led1 = 17
         self.led2 = 27
         self.led3 = 22
-        GPIO.setup(self.pin, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
