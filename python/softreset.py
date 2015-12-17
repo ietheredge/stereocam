@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import time
+import time, sys
 from subprocess import call
 
 class App():
@@ -13,8 +13,12 @@ class App():
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
-        GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=App.shutitdown)
+        try:
+            GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=App.shutitdown)
+        except:
+            pass
 
+            
     def shutitdown(self):
         # flash leds to alert user
         GPIO.output(self.led1, GPIO.HIGH)
@@ -35,9 +39,10 @@ class App():
         GPIO.output(self.led3, GPIO.LOW)
         GPIO.output(self.led1, GPIO.LOW)
         GPIO.output(self.led2, GPIO.LOW)
-        GPIO.cleanup()
         # send to halt state
         call(["sudo", "halt"])
+        GPIO.cleanup()
+        sys.exit(nnn)
 
 
 if __name__ == '__main__':
