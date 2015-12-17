@@ -36,9 +36,10 @@ class App():
             GPIO.output(self.led3, GPIO.LOW)
             GPIO.output(self.led1, GPIO.LOW)
             GPIO.output(self.led2, GPIO.LOW)
-
+            print 'shutting down'
             call(["sudo", "halt"])
         except:
+            print 'running'
             pass
 
 
