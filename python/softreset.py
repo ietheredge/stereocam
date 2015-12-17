@@ -13,12 +13,11 @@ class App():
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
-        try:
-            GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=App.shutitdown)
-        except:
-            pass
+        GPIO.remove_event_detect(self.pin)
+        GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=App.shutitdown(self))
 
-            
+
+
     def shutitdown(self):
         # flash leds to alert user
         GPIO.output(self.led1, GPIO.HIGH)
