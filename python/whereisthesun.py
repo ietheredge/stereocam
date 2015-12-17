@@ -76,9 +76,7 @@ class App:
             GPIO.output(self.horizontalpinno, GPIO.LOW)
 
     def clearleds(self):
-        GPIO.output(self.intosunpinno, GPIO.LOW)
-        GPIO.output(self.awayfromsunpinno, GPIO.LOW)
-        GPIO.output(self.horizontalpinno, GPIO.LOW)
+        GPIO.cleanup()
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()

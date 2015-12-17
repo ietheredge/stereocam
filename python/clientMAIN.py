@@ -59,6 +59,7 @@ for address, status in responses.items():
                 'by >0.1 seconds' % address)
 
 while True:
+    down.listen()
     #availmem, usedmem, totatl = disk.checkds(memthreshold)
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)

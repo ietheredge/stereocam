@@ -13,39 +13,34 @@ class App():
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
         GPIO.setup(self.led1, GPIO.OUT)
+        GPIO.add_event_detect(self.pin, GPIO.BOTH, callback=shutitdown)
 
-    def listen(self):
-        try:
-            time.sleep(0.25)
-            #print 'ok'
-            GPIO.wait_for_edge(self.pin, GPIO.FALLING)
-            #print 'ok'
-            GPIO.output(self.led1, GPIO.HIGH)
-            time.sleep(0.1)
-            GPIO.output(self.led1, GPIO.LOW)
-            GPIO.output(self.led2, GPIO.HIGH)
-            time.sleep(0.1)
-            GPIO.output(self.led2, GPIO.LOW)
-            GPIO.output(self.led3, GPIO.HIGH)
-            time.sleep(0.1)
-            GPIO.output(self.led3, GPIO.LOW)
-            GPIO.output(self.led1, GPIO.LOW)
-            GPIO.output(self.led2, GPIO.LOW)
-            GPIO.output(self.led1, GPIO.HIGH)
-            GPIO.output(self.led2, GPIO.HIGH)
-            GPIO.output(self.led3, GPIO.HIGH)
-            time.sleep(0.1)
-            GPIO.output(self.led3, GPIO.LOW)
-            GPIO.output(self.led1, GPIO.LOW)
-            GPIO.output(self.led2, GPIO.LOW)
-            print 'shutting down'
-            call(["sudo", "halt"])
-        except:
-            #print 'running'
-            pass
+    def shutitdown(self):
+        # flash leds to alert user
+        GPIO.output(self.led1, GPIO.HIGH)
+        time.sleep(0.1)
+        GPIO.output(self.led1, GPIO.LOW)
+        GPIO.output(self.led2, GPIO.HIGH)
+        time.sleep(0.1)
+        GPIO.output(self.led2, GPIO.LOW)
+        GPIO.output(self.led3, GPIO.HIGH)
+        time.sleep(0.1)
+        GPIO.output(self.led3, GPIO.LOW)
+        GPIO.output(self.led1, GPIO.LOW)
+        GPIO.output(self.led2, GPIO.LOW)
+        GPIO.output(self.led1, GPIO.HIGH)
+        GPIO.output(self.led2, GPIO.HIGH)
+        GPIO.output(self.led3, GPIO.HIGH)
+        time.sleep(0.3)
+        GPIO.output(self.led3, GPIO.LOW)
+        GPIO.output(self.led1, GPIO.LOW)
+        GPIO.output(self.led2, GPIO.LOW)
+        GPIO.cleanup()
+        # send to halt state
+        call(["sudo", "halt"])
 
 
 if __name__ == '__main__':
     sudohalt = App()
     while True:
-        sudohalt.listen()
+        sudohalt()
