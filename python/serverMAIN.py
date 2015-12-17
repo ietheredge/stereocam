@@ -10,17 +10,11 @@ import io
 
 # waitfor pi function
 def sendpisignal(GPIOPINNo, wait):
-    while wait:
-        print 'waiting'
-        if GPIO.input(GPIOPINNo):
-            print' waiting'
-	    pass
-        else:
-            wait = False
-            print 'message sent'
+    GPIO.setup(GPIOPINNo, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
 
 ## variables defined
 wait = True
+GPIO.setmode(GPIO.BCM)
 pi2piGPIO = 24
 lat = "27:36:20.80:N" #approximate lattitude, you could have a gps output this directly, but this project is aimed for underwater use (no GPS)
 lon = "95:45:20.00:W" #approximate longitude
