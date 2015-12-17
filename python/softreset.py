@@ -3,7 +3,7 @@ import time
 from subprocess import call
 
 class App():
-    def __init__(self):
+    def __call__(self):
         GPIO.setmode(GPIO.BCM)
         self.pin = 5
         self.led1 = 17
