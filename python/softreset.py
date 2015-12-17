@@ -38,7 +38,7 @@ class App():
             GPIO.output(self.led2, GPIO.LOW)
 
             call(["sudo", "halt"])
-        else:
+        except:
             pass
 
 
