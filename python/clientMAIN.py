@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import os
 import io
-import softreset
+import softresetClient as softreset
 from compoundpi.client import CompoundPiClient
 
 # waitfor pi function
@@ -28,13 +28,13 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(triggerGPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP) # interrupt
 GPIO.setup(pi2piGPIO, GPIO.IN) # switch
 
-## wait for pi2 to come online
+## wait for pi2server to come online
 waitforpisignal(pi2piGPIO, wait)
 
-## set
+## set directory so we can run from rc.local or the local folder
 os.chdir('/')
 
-## shutdown switch
+## turn on shutdown switch listening
 down = softreset.App()
 
 ## cameras
@@ -59,7 +59,6 @@ for address, status in responses.items():
                 'by >0.1 seconds' % address)
 
 while True:
-    down.listen()
     #availmem, usedmem, totatl = disk.checkds(memthreshold)
     try:
         GPIO.wait_for_edge(triggerGPIO, GPIO.FALLING)

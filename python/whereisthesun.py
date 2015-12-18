@@ -41,6 +41,7 @@ class App:
         s=ephem.Sun(self.rig)
         sunalt = str(s.alt)
         sunaz = str(s.az)
+        ## axes will depend on IMU placement/orientatoin
         imuread = imudata["fusionPose"]
         imuroll, imupitch, imuyaw = math.degrees(imuread[0]), math.degrees(imuread[1]),math.degrees(imuread[2]) # x, y, z
         altdeg, altmin, altsec = sunalt.split(":")
@@ -52,6 +53,7 @@ class App:
                        ((azimuth-precision)-180)<=imuyaw<=((azimuth+precision)-180) else False)
         horizontal = (True if (-1*precision)<=imuroll<=precision and (-1*precision)<=imupitch<=precision else False)
         inlinewithsun = (True if (altitude-precision)<=imupitch<=(altitude+precision) else False)
+
         self.callleds(intosun, awayfromsun, horizontal)
         return intosun, awayfromsun, horizontal, altitude, azimuth
 

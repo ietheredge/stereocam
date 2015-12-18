@@ -20,28 +20,26 @@ class App():
 
     def shutitdown(self):
         # flash leds to alert user
+        for pin in [self.led1, self.led2, self.led3]:
+            GPIO.output(pin, GPIO.HIGH)
+            GPIO.output(pin, GPIO.LOW)
+            time.sleep(0.5)
+        for pin in [self.led1, self.led2, self.led3]:
+            GPIO.output(pin, GPIO.HIGH)
+            GPIO.output(pin, GPIO.LOW)
+            time.sleep(0.5)
+        for pin in [self.led1, self.led2, self.led3]:
+            GPIO.output(pin, GPIO.HIGH)
+            GPIO.output(pin, GPIO.LOW)
+            time.sleep(0.5)
         GPIO.output(self.led1, GPIO.HIGH)
-        time.sleep(1)
-        GPIO.output(self.led1, GPIO.LOW)
-        GPIO.output(self.led2, GPIO.HIGH)
-        time.sleep(1)
-        GPIO.output(self.led2, GPIO.LOW)
-        GPIO.output(self.led3, GPIO.HIGH)
-        time.sleep(1)
-        GPIO.output(self.led3, GPIO.LOW)
-        GPIO.output(self.led1, GPIO.LOW)
-        GPIO.output(self.led2, GPIO.LOW)
-        GPIO.output(self.led1, GPIO.HIGH)
         GPIO.output(self.led2, GPIO.HIGH)
         GPIO.output(self.led3, GPIO.HIGH)
-        time.sleep(1)
-        GPIO.output(self.led3, GPIO.LOW)
-        GPIO.output(self.led1, GPIO.LOW)
-        GPIO.output(self.led2, GPIO.LOW)
+        time.sleep(.5)
         # send to halt state
         call(["sudo", "halt"])
         GPIO.cleanup()
-        sys.exit(nnn)
+        sys.exit()
 
 
 if __name__ == '__main__':

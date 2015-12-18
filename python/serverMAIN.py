@@ -1,12 +1,11 @@
 import RTIMU
-import checkbattery, checkdisk, whereisthesun, softreset
+import whereisthesun
+import softresetServer as softreset
 import os
 import math
 import logging
-import datetime
 import time
 import RPi.GPIO as GPIO
-import io
 
 # waitfor pi function
 def sendpisignal(GPIOPINNo, wait):
@@ -18,7 +17,6 @@ GPIO.setmode(GPIO.BCM)
 pi2piGPIO = 24
 lat = "27:36:20.80:N" #approximate lattitude, you could have a gps output this directly, but this project is aimed for underwater use (no GPS)
 lon = "95:45:20.00:W" #approximate longitude
-memthreshold = 2000 #memmory threshold, in kbs
 
 sendpisignal(pi2piGPIO, wait)
 os.chdir('/')
@@ -47,21 +45,13 @@ imu.setAccelEnable(True)
 imu.setCompassEnable(True)
 poll_interval = imu.IMUGetPollInterval()
 
-## disk check and 0sun data
+## sun orientation
 sun = whereisthesun.App(lat, lon)
-disk = checkdisk.App()
 
-## shutdown switch
+## turn on shutdown switch listening
 down = softreset.App()
-# check that there is enough disk space, compress data if space is low
-# use IMU data to determine orientation relative to sun and send signal to indicator LEDS
-#print sunalt
-#print sunaz
-
 
 while True:
-        down.listen()
-    #availmem, usedmem, totatl = disk.checkds(memthreshold)
         data = imu.getIMUData()
         intosun, awayfromsun, horizontal, sunalt, sunaz = sun.checkkeyaxes(data)
         sun.callleds(intosun, awayfromsun, horizontal)
@@ -69,6 +59,9 @@ while True:
         fusionPose = data["fusionPose"]
         datlog.info("r: %f p: %f y: %f quadrant: %s solarangle: %f, %f" % (math.degrees(fusionPose[0]), math.degrees(fusionPose[1]),
                                         math.degrees(fusionPose[2]), ('into sun' if intosun==True else 'away from sun' if awayfromsun==True else 'perpendicular to sun'), sunalt, sunaz))
+
+        sleep(0.25)
+
 
 GPIO.cleanup()
 exit()
